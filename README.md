@@ -16,3 +16,14 @@ Atividades:
 6.  Crie uma API REST, em  Java, que  permita o consumo dos três itens anteriores.
 7.  Exponha a API no API Gateway (Axway, APIgee ou similar) com utilização de Oauth 2.0;
 8.  Crie uma página  em Angular ou React  que chame as API's e mostre os resultados.
+
+OBS.:
+1.	Devido ao erro:<br/>
+Building in Docker Cloud's infrastructure...
+Cloning into '.'...
+Warning: Permanently added the RSA host key for IP address '140.82.113.3' to the list of known hosts.
+Reset branch 'master'
+Your branch is up-to-date with 'origin/master'.
+Dockerfile not found at ./Dockerfile
+<br/>
+Foi necessário add o Dockerfile ao diretorio raiz do projeto git
