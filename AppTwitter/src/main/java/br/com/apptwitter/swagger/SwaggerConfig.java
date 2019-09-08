@@ -33,7 +33,7 @@ public class SwaggerConfig implements WebMvcConfigurer {
 				.description("REST API docs")
 				.version("1.0")
 				.termsOfServiceUrl("Terms of service")
-				.contact(new Contact("Felipe George Roldão",null, "felipegeorge13@gmail.com"))
+				.contact(new Contact("Felipe George Roldão","http://www.feliperoldao.com", "felipegeorge13@gmail.com"))
 				.license("License of API")
 				.licenseUrl(null)
 				.build();
