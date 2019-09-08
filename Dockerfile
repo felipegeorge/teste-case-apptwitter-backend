@@ -15,4 +15,4 @@ WORKDIR /home/apptwitter
 RUN git clone https://github.com/felipegeorge/teste-case-apptwitter-backend.git
 WORKDIR /home/apptwitter/teste-case-apptwitter-backend
 
-ENTRYPOINT ["java", "-Dspring.profiles.active=docker", "-jar", "AppTwitter/target/AppTwitter-1.0.0.jar", "&"]
+CMD ["java", "-Dspring.profiles.active=docker", "-jar", "AppTwitter/target/AppTwitter-1.0.0.jar", "&"]
