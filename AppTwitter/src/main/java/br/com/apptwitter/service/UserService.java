@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import br.com.apptwitter.controller.dto.UserDTO;
 import br.com.apptwitter.data.entities.UserEntity;
 import br.com.apptwitter.data.repositories.UserRepository;
+import br.com.apptwitter.service.loaddata.LoadDataTwitterService;
 import br.com.apptwitter.service.wrapper.UserWrapper;
 
 @Service
@@ -20,9 +21,18 @@ public class UserService implements Serializable {
 
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private LoadDataTwitterService loadDataTwitterService;
 
 	public List<UserDTO> searchUsersTopFiveFollowers() {
+		long startTime = System.currentTimeMillis();
 		List<UserEntity> userList = userRepository.findAll(new Sort(Sort.Direction.DESC, "followersCount"));
+		
+		if(userList.isEmpty()) {
+			loadDataTwitterService.loadDataTwitterServices();
+		}
+		userList = userRepository.findAll(new Sort(Sort.Direction.DESC, "followersCount"));
 		List<UserEntity> userTopFiveList = new ArrayList<UserEntity>();
 
 		for (int i = 0; i < 5; i++) {
@@ -31,7 +41,12 @@ public class UserService implements Serializable {
 			userTopFiveList.add(u);
 		}
 
-		return UserWrapper.convertListUserEntityToListUserDTO(userTopFiveList);
+		List<UserDTO> listUserDTO = UserWrapper.convertListUserEntityToListUserDTO(userTopFiveList);
+		
+		long totalTime = System.currentTimeMillis() - startTime;
+		System.out.println("Time execution from [UserService.searchUsersTopFiveFollowers()] is: " +totalTime );
+		
+		return listUserDTO;
 	}
 
 }

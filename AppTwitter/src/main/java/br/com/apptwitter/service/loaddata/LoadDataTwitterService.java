@@ -19,23 +19,43 @@ public class LoadDataTwitterService implements Serializable {
 	@Autowired
 	private Twitter4JService twitter4JService;
 
-	@Bean
-	public CommandLineRunner loadDataTwitterServices() {
-		return args -> {
-			List<String> hashtagList = new ArrayList<String>();
-			hashtagList.add("#openbanking");
-			hashtagList.add("#apifirst");
-			hashtagList.add("#devops");
-			hashtagList.add("#cloudfirst");
-			hashtagList.add("#microservices");
-			hashtagList.add("#apigateway");
-			hashtagList.add("#oauth");
-			hashtagList.add("#swagger");
-			hashtagList.add("#raml");
-			hashtagList.add("#openapis");
+	public boolean loadDataTwitterServices() {
 
-			twitter4JService.loadTweetsByHashtags(hashtagList);
-		};
+		List<String> hashtagList = new ArrayList<String>();
+		hashtagList.add("#openbanking");
+		hashtagList.add("#apifirst");
+		hashtagList.add("#devops");
+		hashtagList.add("#cloudfirst");
+		hashtagList.add("#microservices");
+		hashtagList.add("#apigateway");
+		hashtagList.add("#oauth");
+		hashtagList.add("#swagger");
+		hashtagList.add("#raml");
+		hashtagList.add("#openapis");
+
+		twitter4JService.loadTweetsByHashtags(hashtagList);
+		
+		return true;
+
 	}
+
+//	@Bean
+//	public CommandLineRunner loadDataTwitterServices() {
+//		return args -> {
+//			List<String> hashtagList = new ArrayList<String>();
+//			hashtagList.add("#openbanking");
+//			hashtagList.add("#apifirst");
+//			hashtagList.add("#devops");
+//			hashtagList.add("#cloudfirst");
+//			hashtagList.add("#microservices");
+//			hashtagList.add("#apigateway");
+//			hashtagList.add("#oauth");
+//			hashtagList.add("#swagger");
+//			hashtagList.add("#raml");
+//			hashtagList.add("#openapis");
+//
+//			twitter4JService.loadTweetsByHashtags(hashtagList);
+//		};
+//	}
 
 }
