@@ -61,7 +61,7 @@ public class Twitter4JAdapter implements Serializable {
 			statuses = queryResult.getTweets();
 
 			int count = statuses.size();
-			while (queryResult.hasNext() && count <= 100) {
+			while (queryResult.hasNext() && count <= 50) {
 				queryResult = getTwitterInstance().search(queryResult.nextQuery());
 				statuses.addAll(queryResult.getTweets());
 
